@@ -3,55 +3,55 @@ import sqlite3
 conexao = sqlite3.connect('dados')
 cursor = conexao.cursor()
 
-# ## 1. Crie uma tabela chamada "alunos" com os seguintes campos: id(inteiro), nome (texto), idade (inteiro) e curso (texto).
-# cursor.execute('DROP TABLE IF EXISTS alunos')
-# cursor.execute('CREATE TABLE alunos(id INT, nome VARCHAR(100), idade INT, curso VARCHAR(100))')
+## 1. Crie uma tabela chamada "alunos" com os seguintes campos: id(inteiro), nome (texto), idade (inteiro) e curso (texto).
+cursor.execute('DROP TABLE IF EXISTS alunos')
+cursor.execute('CREATE TABLE alunos(id INT, nome VARCHAR(100), idade INT, curso VARCHAR(100))')
 
-# ## 2. Insira pelo menos 5 registros de alunos na tabela que você criou no exercício anterior.
+## 2. Insira pelo menos 5 registros de alunos na tabela que você criou no exercício anterior.
  
-#  # Utilizando INSERT OR IGNORE para evitar inserção de registros duplicados
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(1, "Alexia", 25, "BI e Analytics")')
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(2, "Ricaon", 30, "Engenharia de Software")')
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(3, "Carol", 18, "Data Science")')
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(4, "Pamela", 26, "Data Science")')
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(5, "Patricia", 33, "Engenharia de Software")')
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(6, "Rodrigo", 19, "BI e Analytics")')
-# cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(7, "Francisco", 36, "Engenharia de Software")')
+ # Utilizando INSERT OR IGNORE para evitar inserção de registros duplicados
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(1, "Alexia", 25, "BI e Analytics")')
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(2, "Ricaon", 30, "Engenharia de Software")')
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(3, "Carol", 18, "Data Science")')
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(4, "Pamela", 26, "Data Science")')
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(5, "Patricia", 33, "Engenharia de Software")')
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(6, "Rodrigo", 19, "BI e Analytics")')
+cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(7, "Francisco", 36, "Engenharia de Software")')
 
-# ## 3. Consultas Básicas - Escreva consultas SQL para realizar as seguintes tarefas:
-# ### a) Selecionar todos os registros da tabela "alunos".
-# dado = cursor.execute('SELECT * FROM alunos')
-# for aluno in dado: 
-#     print(aluno)
+## 3. Consultas Básicas - Escreva consultas SQL para realizar as seguintes tarefas:
+### a) Selecionar todos os registros da tabela "alunos".
+dado = cursor.execute('SELECT * FROM alunos')
+for aluno in dado: 
+    print(aluno)
 
-# ### b) Selecionar o nome e a idade dos alunos com mais de 20 anos.
-# dado = cursor.execute('SELECT nome,idade FROM alunos WHERE idade > 20')
-# for aluno in dado: 
-#     print(aluno)
+### b) Selecionar o nome e a idade dos alunos com mais de 20 anos.
+dado = cursor.execute('SELECT nome,idade FROM alunos WHERE idade > 20')
+for aluno in dado: 
+    print(aluno)
 
-# ### c) Selecionar os alunos do curso de "Engenharia" em ordem alfabética.
-# dado = cursor.execute('SELECT * FROM alunos WHERE curso="Engenharia de Software" ORDER BY nome ASC')
-# for aluno in dado: 
-#     print(aluno)
+### c) Selecionar os alunos do curso de "Engenharia" em ordem alfabética.
+dado = cursor.execute('SELECT * FROM alunos WHERE curso="Engenharia de Software" ORDER BY nome ASC')
+for aluno in dado: 
+    print(aluno)
 
-# ## d) Contar o número total de alunos na tabela
-# dado = cursor.execute('SELECT COUNT(id) FROM alunos ')
-# for aluno in dado: 
-#     print(aluno)
+## d) Contar o número total de alunos na tabela
+dado = cursor.execute('SELECT COUNT(id) FROM alunos ')
+for aluno in dado: 
+    print(aluno)
 
-# ## 4. Atualização e Remoção
-# ### a) Atualize a idade de um aluno específico na tabela.
-# dado = cursor.execute('UPDATE alunos SET idade=33 WHERE nome="Ricaon"')
-# for aluno in dado: 
-#     print(aluno)
+## 4. Atualização e Remoção
+### a) Atualize a idade de um aluno específico na tabela.
+dado = cursor.execute('UPDATE alunos SET idade=33 WHERE nome="Ricaon"')
+for aluno in dado: 
+    print(aluno)
 
-# ### b) Remova um aluno pelo seu ID.
-# dado = cursor.execute('DELETE FROM alunos WHERE id=6')
-# for aluno in dado: 
-#     print(aluno)
+### b) Remova um aluno pelo seu ID.
+dado = cursor.execute('DELETE FROM alunos WHERE id=6')
+for aluno in dado: 
+    print(aluno)
 
-# conexao.commit()
-# conexao.close()
+conexao.commit()
+conexao.close()
 
 ## 5. Criar uma Tabela e Inserir Dados
 
@@ -114,7 +114,9 @@ cursor.execute('INSERT INTO compras (id, cliente_id, produto, valor) VALUES (4, 
 
 ### c) Escreva uma consulta para exibir o nome do cliente, o produto e o valor de cada compra.
 
-
-    
+cursor.execute('SELECT clientes.nome, compras.produto, compras.valor FROM clientes INNER JOIN compras ON clientes.id = compras.cliente_id')
+for cliente in dados: 
+    print(cliente)
+        
 conexao.commit()
 conexao.close()
