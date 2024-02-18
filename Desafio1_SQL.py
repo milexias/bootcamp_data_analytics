@@ -20,35 +20,31 @@ cursor.execute('INSERT INTO alunos (id, nome, idade, curso) VALUES(7, "Francisco
 
 ## 3. Consultas Básicas - Escreva consultas SQL para realizar as seguintes tarefas:
 ### a) Selecionar todos os registros da tabela "alunos".
-dado = cursor.execute('SELECT * FROM alunos')
-for aluno in dado: 
+alunos = cursor.execute('SELECT * FROM alunos')
+for aluno in alunos: 
     print(aluno)
 
 ### b) Selecionar o nome e a idade dos alunos com mais de 20 anos.
-dado = cursor.execute('SELECT nome,idade FROM alunos WHERE idade > 20')
-for aluno in dado: 
+alunos_mais_20 = cursor.execute('SELECT nome,idade FROM alunos WHERE idade > 20')
+for aluno in alunos_mais_20: 
     print(aluno)
 
 ### c) Selecionar os alunos do curso de "Engenharia" em ordem alfabética.
-dado = cursor.execute('SELECT * FROM alunos WHERE curso="Engenharia de Software" ORDER BY nome ASC')
-for aluno in dado: 
+alunos_engenharia = cursor.execute('SELECT * FROM alunos WHERE curso="Engenharia de Software" ORDER BY nome ASC')
+for aluno in alunos_engenharia: 
     print(aluno)
 
 ## d) Contar o número total de alunos na tabela
-dado = cursor.execute('SELECT COUNT(id) FROM alunos ')
-for aluno in dado: 
-    print(aluno)
+total_alunos = cursor.execute('SELECT COUNT(id) FROM alunos')
+for aluno in total_alunos: 
+    print(print(f'Total de alunos: {aluno[0]}'))
 
 ## 4. Atualização e Remoção
 ### a) Atualize a idade de um aluno específico na tabela.
-dado = cursor.execute('UPDATE alunos SET idade=33 WHERE nome="Ricaon"')
-for aluno in dado: 
-    print(aluno)
+cursor.execute('UPDATE alunos SET idade=33 WHERE nome="Ricaon"')
 
 ### b) Remova um aluno pelo seu ID.
-dado = cursor.execute('DELETE FROM alunos WHERE id=6')
-for aluno in dado: 
-    print(aluno)
+cursor.execute('DELETE FROM alunos WHERE id=6')
 
 conexao.commit()
 conexao.close()
@@ -69,35 +65,31 @@ cursor.execute('INSERT INTO clientes (id, nome, idade, saldo) VALUES(5, "Vitor",
 ## 6. Consultas e Funções Agregadas:
 
 ### a) Selecione o nome e a idade dos clientes com idade superior a 30 anos.
-dados = cursor.execute('SELECT nome,idade FROM clientes WHERE idade > 30')
-for cliente in dados: 
-    print(f'O cliente {cliente} possui idade superior a 30 anos.')
+clientes_mais_30 = cursor.execute('SELECT nome,idade FROM clientes WHERE idade > 30')
+for cliente in clientes_mais_30:
+    print(f'O cliente {cliente[0]} possui idade superior a 30 anos.')
 
 ### b) Calcule o saldo médio dos clientes.
-dados = cursor.execute('SELECT AVG(saldo) FROM clientes')
-for valor in dados: 
-    print(f'O saldo médio dos clientes é de {valor}.')
+saldo_medio = cursor.execute('SELECT AVG(saldo) FROM clientes')
+for valor in saldo_medio: 
+    print(f'O saldo médio dos clientes é de {valor[0]}.')
     
 ### c) Encontre o cliente com o saldo máximo.
-dados = cursor.execute('SELECT MAX(saldo), nome FROM clientes')
-for valor, nome in dados: 
+cliente_saldo_max = cursor.execute('SELECT MAX(saldo), nome FROM clientes')
+for valor, nome in cliente_saldo_max: 
     print(f'O saldo maximo dos clientes é de {valor} para o cliente {nome}.')
 
 ### d) Conte quantos clientes têm saldo acima de 1000.
-dados = cursor.execute('SELECT COUNT(id) FROM clientes WHERE saldo > 1000')
-for contagem in dados: 
-    print(f'O total de {contagem} clientes possuem saldo acima de 1000.')
-
+clientes_acima_1000  = cursor.execute('SELECT COUNT(id) FROM clientes WHERE saldo > 1000')
+for contagem in clientes_acima_1000: 
+    print(f'O total de clientes com saldo acima de 1000 é de {contagem[0]}.')
+    
 ## 7. Atualização e Remoção com Condições
 ### a) Atualize o saldo de um cliente específico.
-dados = cursor.execute('UPDATE clientes SET saldo=1250.75 WHERE nome="Pedro"')
-for cliente in dados: 
-    print(cliente)
+cursor.execute('UPDATE clientes SET saldo=1250.75 WHERE nome="Pedro"')
 
 ### b) Remova um cliente pelo seu ID.
-dados = cursor.execute('DELETE FROM clientes WHERE id=2')
-for cliente in dados: 
-    print(cliente)
+cursor.execute('DELETE FROM clientes WHERE id=2')
 
 ## 8. Junção de Tabelas
 ### a) Crie uma segunda tabela chamada "compras" com os campos: id (chave primária), cliente_id (chave estrangeira referenciando o id da tabela "clientes"), produto (texto) e valor (real).
@@ -114,9 +106,9 @@ cursor.execute('INSERT INTO compras (id, cliente_id, produto, valor) VALUES (4, 
 
 ### c) Escreva uma consulta para exibir o nome do cliente, o produto e o valor de cada compra.
 
-cursor.execute('SELECT clientes.nome, compras.produto, compras.valor FROM clientes INNER JOIN compras ON clientes.id = compras.cliente_id')
-for cliente in dados: 
-    print(cliente)
+consulta_compras = cursor.execute('SELECT clientes.nome, compras.produto, compras.valor FROM clientes INNER JOIN compras ON clientes.id = compras.cliente_id')
+for compra in consulta_compras:
+    print(compra)
         
 conexao.commit()
 conexao.close()
