@@ -2,8 +2,8 @@
 
 ### Repositório para entrega das atividades:
 
-- [Desafio1_SQL](https://github.com/milexias/bootcamp_data_analytics/blob/main/SQL_Exercicio.py): Exercícios de Banco de Dados, integração Python e SQL.
-- [Desafio1_Python](https://github.com/milexias/bootcamp_data_analytics/blob/main/Desafio1_Python.ipynb): Exercícios de Python, utilizando bibliotecas Pandas e NumPy.
+- [`integracao_sql`](https://github.com/milexias/bootcamp_data_analytics/blob/main/integracao_sql.py) - Integração **Python e SQL**; manipulando banco de dados com versionamento em Python e Git.
+- [`saude_do_sono`](https://github.com/milexias/bootcamp_data_analytics/blob/main/saude_do_sono.ipynb) - Bibliotecas **Pandas e NumPy**; impacto do estilo de vida na qualidade do sono. 
 
 
 O Bootcamp em Data Analytics da WoMakersCode é uma colaboração com *Potência Tech, iFood, S&P Global e Microsoft*.
